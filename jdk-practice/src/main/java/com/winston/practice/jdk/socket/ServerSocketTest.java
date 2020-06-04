@@ -19,7 +19,8 @@ public class ServerSocketTest {
                 //accept 从队列里面获取一个请求  建立一个对应的socket
                 Socket accept = socket.accept();
                 System.out.println(Thread.currentThread().getName() + "取得连接");
-                //启动一个线程  来处理当前请求的socket
+                //启动一个线程  来处理当前请求的socket,但是由于启动的线程里面是同步阻塞操作的，
+                //就会导致该线程被占用的时间很长，可能导致线程池的数量可能耗尽，
                 s.submit(() -> {
                     try (InputStream inputStream = accept.getInputStream();) {
                         System.out.println(Thread.currentThread().getName() + "获取了输入流");
