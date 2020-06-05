@@ -1,25 +1,69 @@
+//作用：gradle的自身的资源配置，比如仓库信息、依赖信息、插件信息等
+buildscript {
+	ext {
+		//定义spring boot插件的版本号
+		springBootVersion = '2.2.1.RELEASE'
+	}
+	repositories {
+		//优先使用阿里云的仓库下载依赖
+		maven { url 'https://maven.aliyun.com/repository/public' }
+		//maven 中央仓库
+		mavenCentral()
+	}
+	dependencies {
+		// 让spring-boot支持gradle
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
 plugins {
-	id 'org.springframework.boot' version '2.3.0.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	//新版本的  这样写会报错 错误为 ：Plugin request for plugin already on the classpath must not include a version
+	//id 'org.springframework.boot' version '2.2.1.RELEASE'
+	//id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
 }
 
-group = 'com.example.practice'
-version = '0.0.1-SNAPSHOT'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.winston.practice'
+version '1.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
 }
-
 dependencies {
+
+	/**
+	 * 作用：依赖包的配置
+	 * 依赖方式：在2.x版本和3.0以后的版本更换了关键字
+	 * | 2.x | 3.0 OR later | 描述 |
+	 * | -------- | ----- | :---- | |
+	 * | compile | implementation，api |编译以及运行时都需要|
+	 * | provided | compileOnly、[ compileClasspath ] |仅编译需要|
+	 * | apk | runtimeOnly |仅运行时需要|
+	 * | testCompile| testImplementation | 测试编译时使用 |
+	 * Tips：常用的就是implementation、testCompile 和 compileOnly.
+	 */
+	//spring boot 的基本模块
 	implementation 'org.springframework.boot:spring-boot-starter'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//spring的web模块
+	implementation('org.springframework.boot:spring-boot-starter-web') {
+		// tomcat 的优先级 比 jetty的高   所以当我们需要使用jetty作为容器的时候 需要将web下面的Tomcat排除
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+	}
+	implementation 'org.springframework.boot:spring-boot-starter-jetty'
+
+	//spring-data-jpa 会依赖  spring-data-jdbc 因为  jpa 需要用到 DataSourceAutoConfiguration
+	compile group: 'commons-io', name: 'commons-io', version: '2.7'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
-
 test {
 	useJUnitPlatform()
 }
