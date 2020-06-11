@@ -9,9 +9,9 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
+
 
 @Slf4j
 public class NioServerSocketChannelTest {
@@ -27,7 +27,7 @@ public class NioServerSocketChannelTest {
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(local);
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-            while(true) {
+            while (true) {
                 int num = selector.select(2000);
                 if (num > 0) {
                     log.info(">>>监听到事件:{}", num);
@@ -40,7 +40,7 @@ public class NioServerSocketChannelTest {
                             log.info("连接事件");
                             ServerSocketChannel channel = (ServerSocketChannel) next.channel();
                             SocketChannel accept = channel.accept();
-                            accept.write(ByteBuffer.wrap(("Hi "+accept.getRemoteAddress()+"welcome to login").getBytes()));
+                            accept.write(ByteBuffer.wrap(("Hi " + accept.getRemoteAddress() + "welcome to login").getBytes()));
                             accept.configureBlocking(false);
                             accept.register(selector, SelectionKey.OP_READ);
                         } else if (next.isReadable()) {
