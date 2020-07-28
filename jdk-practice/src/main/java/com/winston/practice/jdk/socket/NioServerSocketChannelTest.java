@@ -9,6 +9,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -48,8 +49,8 @@ public class NioServerSocketChannelTest {
                             ByteBuffer byteBuffer = ByteBuffer.allocate(10);
                             channel.read(byteBuffer);
                             byteBuffer.flip();
-                            //String receivedRequestData = StandardCharsets.UTF_8.newDecoder().decode(byteBuffer).toString();
-                            String receivedRequestData = new String(byteBuffer.array()).trim();
+                            String receivedRequestData = StandardCharsets.UTF_8.newDecoder().decode(byteBuffer).toString();
+                            //String receivedRequestData = new String(byteBuffer.array()).trim();
                             log.info(">>>收到:{}内容:{}", channel.getRemoteAddress(), receivedRequestData);
 
                         }
