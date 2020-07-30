@@ -1,4 +1,4 @@
-package com.winston.practice.jdk.collection;
+package com.winston.practice.jdk.testcollections.queue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

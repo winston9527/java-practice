@@ -1,4 +1,4 @@
-package com.winston.practice.jdk.collection;
+package com.winston.practice.jdk.testcollections.queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
