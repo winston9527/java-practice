@@ -34,7 +34,7 @@ public class TestSerializable {
                 e.printStackTrace();
             }
         }
-        //writeObject(file, p1);
+        writeObject(file, p1);
         Person p2 = (Person) readObject(file);
         System.out.println(p2);
         System.out.println(p1 == p2);
