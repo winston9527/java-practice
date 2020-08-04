@@ -15,7 +15,7 @@ public class TestSemaphore {
     /**
      * Semaphore 音标 seməfɔ:(r) 信号量
      */
-    static Semaphore semaphore = new Semaphore(1, true);
+    private static Semaphore semaphore = new Semaphore(1, true);
 
     public static void main(String[] args) {
         System.out.println(semaphore.availablePermits());
