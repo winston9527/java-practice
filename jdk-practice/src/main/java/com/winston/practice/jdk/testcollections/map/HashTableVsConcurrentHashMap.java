@@ -36,27 +36,27 @@ public class HashTableVsConcurrentHashMap {
         mapTest(new Hashtable<>(919000));
         executor.shutdown();
         /**
-         class java.util.Hashtable时间:486，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:577，大小:919000
-         class java.util.Hashtable时间:176，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:26，大小:919000
-         class java.util.Hashtable时间:224，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
-         class java.util.Hashtable时间:173，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:69，大小:919000
-         class java.util.Hashtable时间:184，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:13，大小:919000
-         class java.util.Hashtable时间:282，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
-         class java.util.Hashtable时间:179，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:10，大小:919000
-         class java.util.Hashtable时间:229，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
-         class java.util.Hashtable时间:284，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
-         class java.util.Hashtable时间:170，大小:919000
-         class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
-         class java.util.Hashtable时间:210，大小:919000
+         *          class java.util.Hashtable时间:486，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:577，大小:919000
+         *          class java.util.Hashtable时间:176，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:26，大小:919000
+         *          class java.util.Hashtable时间:224，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
+         *          class java.util.Hashtable时间:173，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:69，大小:919000
+         *          class java.util.Hashtable时间:184，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:13，大小:919000
+         *          class java.util.Hashtable时间:282，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
+         *          class java.util.Hashtable时间:179，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:10，大小:919000
+         *          class java.util.Hashtable时间:229，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
+         *          class java.util.Hashtable时间:284，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
+         *          class java.util.Hashtable时间:170，大小:919000
+         *          class java.util.concurrent.ConcurrentHashMap时间:11，大小:919000
+         *          class java.util.Hashtable时间:210，大小:919000
          *
          * 把其他影响的因素排除后（比如 线程池，初始化 集合容量，避免处理过程中扩容影响），根据上面的结果  看起来  效果是要好很多
          *
