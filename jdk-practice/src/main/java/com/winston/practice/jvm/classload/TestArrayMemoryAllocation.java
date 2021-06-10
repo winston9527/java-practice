@@ -12,7 +12,9 @@ public class TestArrayMemoryAllocation {
         byte[] array = new byte[1024*1024];
     }
     static void testBoolean(){
-        //4956-3932=1024k
+        //4956-3932=1024k  此处并不代表boolean占用一个字节，
+        //jvm并未定义 boolean 这种类型 所以 boolean平时会被转为int类型 所以占用4个字节，此处boolean的数组会被转为byte数组，所以占用一个字节
+
         boolean[] array = new boolean[1024*1024];
     }
     static void testObject(){
