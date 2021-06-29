@@ -25,5 +25,7 @@ public class TestArrayMemoryAllocation {
     static void testLong(){
         //12124K-3932=8192
         long[] array = new long[1024*1024];
+        //匿名用户   先添加cart  再登录后  checkout   能不能 将原来的cart owner id修改为 当前登录的 epid
+        //匿名用户   先添加cart  checkout 的时候 能不能 使用当前 cart 的epid 来创建 person
     }
 }

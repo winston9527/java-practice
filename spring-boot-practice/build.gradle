@@ -63,6 +63,10 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+
+	implementation group: 'com.alibaba.otter', name: 'canal.client', version: '1.1.5'
+	implementation group: 'com.alibaba.otter', name: 'canal.protocol', version: '1.1.5'
+
 }
 test {
 	useJUnitPlatform()

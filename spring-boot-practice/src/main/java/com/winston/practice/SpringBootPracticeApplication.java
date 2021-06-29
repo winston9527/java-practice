@@ -1,8 +1,14 @@
 package com.winston.practice;
 
+import com.winston.practice.entity.Email;
+import com.winston.practice.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.cglib.core.DebuggingClassWriter;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Arrays;
 
 
 /**
@@ -29,7 +35,25 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 public class SpringBootPracticeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootPracticeApplication.class, args);
+		//System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "cglib");
+		ConfigurableApplicationContext run = SpringApplication.run(SpringBootPracticeApplication.class, args);
+		EntityConfig bean = run.getBean(EntityConfig.class);
+		System.out.println(bean);
+
+		User hehe = bean.hehe();
+		System.out.println(hehe.getEmail().hashCode());
+
+		User bean1 = run.getBean(User.class);
+		System.out.println(bean1.getEmail().hashCode());
+
+		Email email = run.getBean(Email.class);
+		System.out.println(email.hashCode());
+		System.out.println(bean1.getEmail()==email);
+		String[] beanNamesForType = run.getBeanNamesForType(User.class);
+		Arrays.stream(beanNamesForType).forEach(System.out::println);
+
+//		User user = run.getBean(User.class);
+//		System.out.println(user);
 	}
 
 }
